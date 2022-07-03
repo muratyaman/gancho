@@ -11,7 +11,4 @@ export interface IBaseDto extends IObject {
   updatedAt: RawDateType;
 }
 
-export type IJsonScalar = string | number | boolean | null;
-export type IJsonList   = Array<IJsonScalar>;
-export type IJsonObject = Record<string, IJsonScalar>;
-export type IJson       = IJsonScalar | IJsonList | IJsonObject;
+export type IJson = string | number | boolean | null | IJson[] | {[key: string]: IJson };

@@ -44,14 +44,12 @@ describe('GanchoService', () => {
     const created = await gancho.repoEventKinds.create(eventKindUserCreated);
     expect(typeof created === 'object').to.eq(true);
     expect('createdAt' in eventKindUserCreated).to.eq(true);
-    console.log({ eventKindUserCreated });
   });
 
   it('should create owner', async () => {
     const created = await gancho.repoOwners.create(owner1);
     expect(typeof created === 'object').to.eq(true);
     expect('id' in owner1).to.eq(true);
-    console.log({ owner1 });
   });
 
   it('should create webhook', async () => {
@@ -59,7 +57,6 @@ describe('GanchoService', () => {
     const created = await gancho.repoWebhooks.create(webhook1);
     expect(typeof created === 'object').to.eq(true);
     expect('id' in webhook1).to.eq(true);
-    console.log({ webhook1 });
   });
 
   it('should create event', async () => {
@@ -67,7 +64,6 @@ describe('GanchoService', () => {
     const created = await gancho.repoEvents.create(event1);
     expect(typeof created === 'object').to.eq(true);
     expect('id' in event1).to.eq(true);
-    console.log({ event1 });
   });
 
   it('should create delivery', async () => {
@@ -75,31 +71,26 @@ describe('GanchoService', () => {
     const created = await gancho.repoDelivery.create(delivery1);
     expect(typeof created === 'object').to.eq(true);
     expect('id' in delivery1).to.eq(true);
-    console.log({ delivery1 });
   });
 
   it('should list deliveries', async () => {
     const deliveries = await gancho.repoDelivery.findMany({ webhookId: webhook1.id ?? '' });
     expect(Array.isArray(deliveries)).to.eq(true);
-    console.log({ deliveries });
   });
 
   it('should retrieve a delivery', async () => {
     const delivery = await gancho.repoDelivery.retrieve(delivery1.id ?? '');
     expect(delivery.id).to.eq(delivery1.id ?? '');
-    console.log({ delivery });
   });
 
   it('should update a delivery', async () => {
     const change = { reponse: { status: 400 } };
     const updated = await gancho.repoDelivery.update(delivery1.id ?? '', change);
     expect(typeof updated === 'object').to.eq(true);
-    console.log({ updated });
   });
 
-  it('should retrieve a delivery', async () => {
+  it('should delete a delivery', async () => {
     const deleted = await gancho.repoDelivery.delete_(delivery1.id ?? '');
     expect(deleted).to.eq(true);
-    console.log({ deleted });
   });
 });

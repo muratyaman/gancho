@@ -21,6 +21,7 @@ export interface IWebhook extends IBaseDto {
   ownerId : IdType;
   kindIds : IdType[];
   url     : string;
+  active  : boolean;
   settings: IJson;
 }
 
